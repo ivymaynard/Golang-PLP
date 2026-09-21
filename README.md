@@ -1,6 +1,19 @@
 # Golang-PLP
 
-## Getting Started with Golang (Go)!
+## History of Golang (Go)!
+
+Go is a language designed by Robert Griesemer, Rob Pike, and Ken Thompson. It was developed by Google and publically annpunced in 2009. It is a general-purpouse programming language built to imporve productivity and asses some of the criticisims of other languages used at Google, while keeping the desired features. It mostly stemmed from issues the designres had with the language C++
+
+### Uses of Go
+
+Go is primarily used for web backends, deleopment automation tools, distributed systems, and building scalable cloud-native infrastructure. It has fast startup times which make it great for building scalable microservices, scalable APIS, web servers, and more. Go is one of the languages used at google for site realiability engineering and large scale data processing and is part of the software that runs Google Cloud. Uber also uses Go to handle tasks like matching riders with drivers. Netflix uses Go to handle heavy data processing demands.
+
+### Resources
+[Official Go tutorial](https://go.dev/tour/welcome/1)
+[Go Development Page](https://go.dev/)
+[Geeks for Geeks Intro to Go}(https://www.geeksforgeeks.org/go-language/go-programming-language-introduction/)
+
+## Getting Started with Go!
 
 Before you start coding, you need to install Go. You can do so using the [Download and Install](https://go.dev/doc/install) instructions here.
 
