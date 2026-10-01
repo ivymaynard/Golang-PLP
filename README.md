@@ -1,6 +1,6 @@
-# Golang-PLP
+# Golang Tutorial - Personal Language Project
 
-## History of Golang (Go)!
+<details><summary>## History of Golang (Go)!</summary>
 
 Go is a language designed by Robert Griesemer, Rob Pike, and Ken Thompson. It was developed by Google and publically annpunced in 2009. It is a general-purpouse programming language built to imporve productivity and asses some of the criticisims of other languages used at Google, while keeping the desired features. It mostly stemmed from issues the designres had with the language C++
 
@@ -11,9 +11,10 @@ Go is primarily used for web backends, deleopment automation tools, distributed 
 ### Resources
 [Official Go tutorial](https://go.dev/tour/welcome/1)
 [Go Development Page](https://go.dev/)
-[Geeks for Geeks Intro to Go}(https://www.geeksforgeeks.org/go-language/go-programming-language-introduction/)
+[Geeks for Geeks Intro to Go](https://www.geeksforgeeks.org/go-language/go-programming-language-introduction/)
+</details>
 
-## Getting Started with Go!
+<details><summary>## Getting Started with Go!</summary>
 
 Before you start coding, you need to install Go. You can do so using the [Download and Install](https://go.dev/doc/install) instructions here.
 
@@ -81,6 +82,8 @@ This help feature will give you a list of all other commands that may be helpful
 ```
 go help
 ```
+
+</details>
   
 
 
