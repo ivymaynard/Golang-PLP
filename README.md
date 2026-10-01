@@ -14,7 +14,6 @@ Go is primarily used for web backends, deleopment automation tools, distributed 
 [Geeks for Geeks Intro to Go](https://www.geeksforgeeks.org/go-language/go-programming-language-introduction/)
 
 ## Getting Started with Go!
-<details><summary></summary>
 
 Before you start coding, you need to install Go. You can do so using the [Download and Install](https://go.dev/doc/install) instructions here.
 
@@ -83,7 +82,93 @@ This help feature will give you a list of all other commands that may be helpful
 go help
 ```
 
-</details>
+## Data Types
+
+Go is a statically types programming language. Similarly to Java, once a variable type is defined, it can only store that data type.
+
+Four categories of data types:
+1. Basic Type
+2. Aggregate Type
+3. Reference Type
+4. Interface Type
+
+### Basic Type:
+The basic type, also refered to as primative type, includes numbers, strings, and booleans. Within this category, we can further classify the data types into numbers, booleans, and strings.
+
+#### Integers
+In Go, there are signed and unsigned integers, int and uint respectivley. Both are availible in four sizes, 8 bit, 16 but, 32 bit, or 64 bit.
+- int8, int16, int32, int64, uint8 (or byte) , uint16, uint32, uint64
+- int or uint: either 32 or 64 bits
+- uintptr: unsigned integer type with an undefined width
+
+Addition, subtraction, multiplication, division, and remainder dividion can be used on integer data types.
+```
+example code of defining integers and doing arithmetic
+simple code here, more detailed in full example code
+```
+
+#### Floating-Point Numbers
+
+There are two types of floating-point numbers in Go:
+- float32
+- float63
+
+Addition, subtraction, multiplication, and dividision can be used on floats.
+
+```
+example code of defining integers and doing arithmetic
+simple code here, more detailed in full example code
+```
+
+#### Complex Numbers
+
+
+#### Booleans
+
+#### Strings
+
+### Aggregate Type
+
+#### Arrays
+
+#### Structs
+
+### Reference Type
+
+#### Maps 
+Also known as a dictionary, maps are...
+
+
+
+### Native Go Data Types
+- might make sense to do a small section on each type. need to answer the question of which operands are availbe for each data type
+research naming convention for variables
+write code to create variable of int, string, float, bool, array, dict where possible
+research not listed data types and include
+
+### Operations Interacting with Data Types
+code expirimenting with operations on similiar and dissimilar data types
+research quirks of go and look for examples of operands
+
+
+## Additional Info (change section title based on what I research)
+- some of this may make more sense in the intro. might be able to sophisticate/personalize the intro section based on this
+key words or reserved words
+naming requierments for variables
+naming comventions? enforced by compiler or suggested?
+statically or dynamically typed
+nuilt in complex data types?
+
+## Bounding
+research when identifier names and operator symbols are bound in the languages
+might not need to be a whole section
+
+
+## Limitations of Go
+Illustrative example
+write a problem/question for the readers to answer. show the limitations of my language through this
+ex. if you try to print x fromt he code below, would it compile and run? If not, why?
+x = "5" + 6
   
 
 
