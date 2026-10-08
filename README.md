@@ -8,11 +8,6 @@ Go is a language designed by Robert Griesemer, Rob Pike, and Ken Thompson. It wa
 
 Go is primarily used for web backends, deleopment automation tools, distributed systems, and building scalable cloud-native infrastructure. It has fast startup times which make it great for building scalable microservices, scalable APIS, web servers, and more. Go is one of the languages used at google for site realiability engineering and large scale data processing and is part of the software that runs Google Cloud. Uber also uses Go to handle tasks like matching riders with drivers. Netflix uses Go to handle heavy data processing demands.
 
-### Resources
-[Official Go tutorial](https://go.dev/tour/welcome/1)
-[Go Development Page](https://go.dev/)
-[Geeks for Geeks Intro to Go](https://www.geeksforgeeks.org/go-language/go-programming-language-introduction/)
-
 ## Getting Started with Go!
 
 Before you start coding, you need to install Go. You can do so using the [Download and Install](https://go.dev/doc/install) instructions here.
@@ -84,80 +79,131 @@ go help
 
 ## Data Types
 
-Go is a statically types programming language. Similarly to Java, once a variable type is defined, it can only store that data type.
+Go is a statically types programming language. This means that the type of variables is known at compile time. Each one is assigned a sata type, which determines it's size, memory, operations that can be performed on it, and the values it can hold.
 
-Four categories of data types:
+The four categories of data types are:
 1. Basic Type
 2. Aggregate Type
 3. Reference Type
 4. Interface Type
 
 ### Basic Type:
-The basic type, also refered to as primative type, includes numbers, strings, and booleans. Within this category, we can further classify the data types into numbers, booleans, and strings.
+The basic type, also refered to as primative type, includes numbers, strings, and booleans. These categories contan various data types listed below.
 
-#### Integers
-In Go, there are signed and unsigned integers, int and uint respectivley. Both are availible in four sizes, 8 bit, 16 but, 32 bit, or 64 bit.
-- int8, int16, int32, int64, uint8 (or byte) , uint16, uint32, uint64
-- int or uint: either 32 or 64 bits
-- uintptr: unsigned integer type with an undefined width
-
-Addition, subtraction, multiplication, division, and remainder dividion can be used on integer data types.
-```
-example code of defining integers and doing arithmetic
-simple code here, more detailed in full example code
-```
-
-#### Floating-Point Numbers
-
-There are two types of floating-point numbers in Go:
-- float32
-- float63
-
-Addition, subtraction, multiplication, and dividision can be used on floats.
+#### Numeric Types
+In go, numeric types store various types of numbers. This includes standard integers, floats, and complex numbers.
+- Integers
+- Signed Integers: int, int8, int16, int32, int64
+- Unsigned Integers: uint, uint8, uint16, uint32, uint64
+- Floating-Point Numbers
+- float32: 32-bit floating-point number
+- float64: 64-bit floating-point number (double precision)
+- Complex Numbers
+- complex64: Complex number with float32 real and imaginary parts
+- complex128: Complex number with float64 real and imaginary parts
 
 ```
-example code of defining integers and doing arithmetic
-simple code here, more detailed in full example code
+var x int = 24
+var y float32 = 4.44
+var z complex64 = 6 + 7i
 ```
 
-#### Complex Numbers
+Numeric types follow standard rules for **artithmetic operators**. For example, addition, subtraction, multiplicaton, division, and remainder division can be performed on integers, whereas all but remainder division can be performed on floats.
 
 
 #### Booleans
+The boolean type can only hold true or false and is represented by "bool." You cannot perform arithmetic operations on booleans.
+
+```
+var isTrue bool = true
+```
 
 #### Strings
+Strings are immutable sequences of characters.
+```
+var name string = "Jane"
+```
+
+The only arithmetic operator that can be used on strings is +, which concatenates separate, whole, strings into one.
+```
+string1 = "Hello! "
+string2 = "World"
+fmt.Println(string1 + string2) // Output: Hello! World
+
+```
 
 ### Aggregate Type
+These are also called derived or composite data types. These aggreate types are used to build more complex data structures.
 
 #### Arrays
+These are sequences of a particular data type. The size of the array is defined in the programming stage and cannot be changed. Arithmetic operations cannot be directly performed on array data types, but they can be performed on the values within the array, either through indexing or looping.
+```
+// array of 4 integers
+var nums[4]int = [5]int{1, 2, 3,4}
 
+// array of 3 strings
+var names[3]string = [3]string{"Connor", "Mack", "Will"}
+
+// accessing an element
+ftm.Println(names[1]) // Output: Mack
+```
+
+#### Slices
+Similar to arrays, slices are sequences of a particular data type, but they are more flexible as they are not of a fixed size. Arithmetic operations also cannot be directly performed on slices, only thier values.
+```
+var floats []float32 = []float32{4.10, 2.71, 2.97}
+floats = append(floats, 8.70) // Adding a value to the array
+```
 #### Structs
+A struct (abbreviation for structure) is used to create custom data types by grouping together variables of different data types. They are used to represent real-world entities with sets of properties. Arithmetic operations cannot be performed on the structs as a whole, but they can be used on the values of the properties stored within the struct.
+
+This data type is similar to classes in object-oriented languages like Python. You can read more about Structs on [Geeks for Geeks](https://www.geeksforgeeks.org/go-language/structures-in-golang/).
+
+```
+type Person struct {
+    name string
+    age int
+    weight float
+    dogOwner bool
+```
+
+Defining and adding to a structure:
+```
+var p // initializing a blank struct
+
+var p = Person{"Adriana", 21, 150, true} // initializing a variable of a struct
+```
 
 ### Reference Type
 
 #### Maps 
-Also known as a dictionary, maps are...
+Also known as a dictionary, maps are unordered collections of key-value pairs. Each key is unique, and can correspond to one or many values (or arrays of values). These values can be retrived quickly using their associated keys. Arithmetic operations cannot be used on maps as a whole. They can be used on the values within the map, either in isolation, or through iteration over all the key-value pairs.
 
+```
+var salary map[string]int = make(map[string]int) // instantiates the map
+salary["Sid"] = 8
+salary["Leo"] = 14
 
+fmt.Println(salary["Leo"]) //Output: 14
+```
 
-### Native Go Data Types
-- might make sense to do a small section on each type. need to answer the question of which operands are availbe for each data type
-research naming convention for variables
-write code to create variable of int, string, float, bool, array, dict where possible
-research not listed data types and include
+## Reserved Words
+There are 25 reserved words in Go. These words have predefined meaning that cannot be used as variable names or function names. There are four cetegories of key words.
 
-### Operations Interacting with Data Types
-code expirimenting with operations on similiar and dissimilar data types
-research quirks of go and look for examples of operands
+**Declarations:** const, func, import, package, type, var. These allow you to import packages, organize code, and define variables, constants, types, and functions.
+
+**Composite Types:** chan, interface, map, struct. These are used to declare data structures, method sets, or communication channels.
+
+**Control Flow:** break, case, continue, default, else, fallthrough, for, goto, if, range, return, switch. These words establish and control loops and conditional statments.
+
+**Concurrency:** defer, go, select. These handle asynchronus execution, cleanups, and milti-channel monitoring.
+
+## Naming Requierments and Convention
 
 
 ## Additional Info (change section title based on what I research)
-- some of this may make more sense in the intro. might be able to sophisticate/personalize the intro section based on this
-key words or reserved words
 naming requierments for variables
 naming comventions? enforced by compiler or suggested?
-statically or dynamically typed
-nuilt in complex data types?
 
 ## Bounding
 research when identifier names and operator symbols are bound in the languages
@@ -169,8 +215,27 @@ Illustrative example
 write a problem/question for the readers to answer. show the limitations of my language through this
 ex. if you try to print x fromt he code below, would it compile and run? If not, why?
 x = "5" + 6
-  
 
+
+## Resources
+[Official Go tutorial](https://go.dev/tour/welcome/1)
+
+[Go Development Page](https://go.dev/)
+
+[Intro to Go - Geeks for Geeks](https://www.geeksforgeeks.org/go-language/go-programming-language-introduction/)
+
+[Data Types in Go - Geeks for Geeks](geeksforgeeks.org/go-language/data-types-in-go/)
+
+[Golang Data Types - Medium](https://jyos-sw.medium.com/golang-data-types-429ba314f10a)
+
+[Keywords and Identifiers in Go - Go101](https://go101.org/article/keywords-and-identifiers.html)
+
+  
+NOTES:
+brainstorm for the code sample i need to write
+- create a struct class
+- create a main function and instantiate a struct object
+- access some of the values from that object and perform artihmetic on them
 
 
 
