@@ -199,18 +199,44 @@ There are 25 reserved words in Go. These words have predefined meaning that cann
 **Concurrency:** defer, go, select. These handle asynchronus execution, cleanups, and milti-channel monitoring.
 
 ## Naming Requierments and Convention
+An important feature of Go is that access control is built directly into the case of an identifier. An exported, or public, identifier begins with an uppercase while an unexported, or private, identifier starts with a lowercase.
 
+Go also strictly enforces the use of either camelCase or PascalCase for identifiers. Intitials or acronyms must be consistent in their original case however. For example, UserID and HTTPClient are correct while UserId and HttpClient are incorrect. Don't use ALL_CAPS, ALLCAPS, or snake_case.
 
-## Additional Info (change section title based on what I research)
-naming requierments for variables
-naming comventions? enforced by compiler or suggested?
+Conventionally, the smaller the scope the shorter the name. This means that local variables should have very short names, such as i and x. The same rules apply to functions. If you have a function that reads, instead of calling it reader, you should name it r. Also, get functions in Go should not use the Get prefix. For example user.GetName() is incorrect. Instead, use user.Name().
 
-## Bounding
-research when identifier names and operator symbols are bound in the languages
-might not need to be a whole section
+More nuanced information about naming conventions and requierments can be found in the [Go Documentation](https://go.dev/doc/effective_go).
+
+## Binding
+Identifiers are bound to their respective entities during compile time, link time, or run time.
+
+**1. Static Binding**
+ Most identifier binding in C++ is static, meaning it is bound before the program runs. Static binding happens in compile time or link time. Local variables and function calls are exampels of binding happening in compile time. Global variables and functions are bound during link time.
+
+**2. Dynamic Binding**
+This occurs during run time when the exact entity that an identifier refers to cannot be known until the program is running.
 
 
 ## Limitations of Go
+Go is widley known to have fast compilation, exceptional performance, and simplistic design, as it was designed to improve upon some of the issues of C++; however, it's minimalism causes some limitations.
+
+Becasue Go is statically and strongly typed, you cannot add variables of different types, including adding ints to floats.
+```
+var num int = 5
+var dec float64 = 2.71
+ftm.Println(num + dec) // results in an error
+```
+
+The way to work around this is by explicitly converting the integer to a float and then adding them.
+```
+var num int = 5
+var dec float64 = 2.71
+
+result := float64(num) + dec // output: 7.71
+```
+
+Thinking about the limitation above, 
+adding ints and floats, adding different types of variables to a list, converting between data types.
 Illustrative example
 write a problem/question for the readers to answer. show the limitations of my language through this
 ex. if you try to print x fromt he code below, would it compile and run? If not, why?
