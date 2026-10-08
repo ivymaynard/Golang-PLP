@@ -232,15 +232,17 @@ The way to work around this is by explicitly converting the integer to a float a
 var num int = 5
 var dec float64 = 2.71
 
-result := float64(num) + dec // output: 7.71
+result := float64(num) + dec
+ftm.Println(result) // output: 7.71
 ```
 
-Thinking about the limitation above, 
-adding ints and floats, adding different types of variables to a list, converting between data types.
-Illustrative example
-write a problem/question for the readers to answer. show the limitations of my language through this
-ex. if you try to print x fromt he code below, would it compile and run? If not, why?
-x = "5" + 6
+Thinking about the limitation above, what would happen if you tried to run the code below? Can you add strings to integers? What about other data types?
+```
+var word string = "Hi"
+var num int = 5
+
+ftm.Println(word + num)
+```
 
 
 ## Resources
@@ -255,15 +257,3 @@ x = "5" + 6
 [Golang Data Types - Medium](https://jyos-sw.medium.com/golang-data-types-429ba314f10a)
 
 [Keywords and Identifiers in Go - Go101](https://go101.org/article/keywords-and-identifiers.html)
-
-  
-NOTES:
-brainstorm for the code sample i need to write
-- create a struct class
-- create a main function and instantiate a struct object
-- access some of the values from that object and perform artihmetic on them
-
-
-
-
-
