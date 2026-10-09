@@ -187,6 +187,9 @@ salary["Leo"] = 14
 fmt.Println(salary["Leo"]) //Output: 14
 ```
 
+#### Pointers
+These are variables used to store the memory address of another variable. The memory address of these pointers is always found in hexidecimal form.
+
 ## Reserved Words
 There are 25 reserved words in Go. These words have predefined meaning that cannot be used as variable names or function names. There are four cetegories of key words.
 
@@ -259,3 +262,5 @@ ftm.Println(word + num)
 [Keywords and Identifiers in Go - Go101](https://go101.org/article/keywords-and-identifiers.html)
 
 [If Else Statments - Geeks for Geeks](https://www.w3schools.com/go/go_else_statement.php)
+
+[Pointers in Golang - Geeks for Geeks](https://www.geeksforgeeks.org/go-language/pointers-in-golang/#google_vignette)
