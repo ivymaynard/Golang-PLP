@@ -1,3 +1,5 @@
+// A file exploring some of the built in data types in Go and some simple use cases
+
 package main
 
 import "fmt"
@@ -38,11 +40,3 @@ type Player struct {
 	Goals int
 	Assists int
 }
-
-/*
-NOTES:
-brainstorm for the code sample i need to write
-- create a struct class
-- create a main function and instantiate a struct object
-- access some of the values from that object and perform artihmetic on them
-*/
