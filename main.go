@@ -30,6 +30,13 @@ func main() {
 		fullWeek := true
 		fmt.Println("\nA full week of data was recorded: ", fullWeek)
 	}
+	
+	// Conversion of Numeric data types
+	var pts int = p.Goals + p.Assists
+	fmt.Println("\nPoints:", pts)
+	ptsFloat := float32(pts) // Int must be converted to float for division to work
+	var PPG float32 = ptsFloat/82
+	fmt.Println("Points per game:", PPG)
 }
 
 // Defining the struct 
