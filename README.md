@@ -257,3 +257,5 @@ ftm.Println(word + num)
 [Golang Data Types - Medium](https://jyos-sw.medium.com/golang-data-types-429ba314f10a)
 
 [Keywords and Identifiers in Go - Go101](https://go101.org/article/keywords-and-identifiers.html)
+
+[If Else Statments - Geeks for Geeks](https://www.w3schools.com/go/go_else_statement.php)
