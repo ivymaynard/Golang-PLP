@@ -262,6 +262,27 @@ are there variables other than if/else/elif
 explain code blocks in control statements
 explain "dangling else" problem
 
+Conditional statements in Go use boolean expressions to dictate the flow of program control. They check the specified conditions and run code chunks depending on the evaluated value of the boolean statement. In general, the format of an if/else statement in Go looks like:
+
+```
+if condition {
+  // code to be executed if the condition is true
+} else {
+  // code to be executed if the condition is false
+}
+```
+
+Here is an example of a simple if/else statement being used to determine if a student passed or failed an exam. Notice how the else statement is used as a catch-all. Anything grade that does not evaluate
+
+```
+grade := 95
+if (grade < 51 {
+  fmt.Println("Try again next time...")
+} else {
+  fmt.Println("Congrats! You passed.")
+}
+```
+
 ### Milti-Condition if/else Statement
 does go short circut? include example 
 
@@ -288,3 +309,5 @@ do you have to use break or can you use continue
 [If Else Statments - Geeks for Geeks](https://www.w3schools.com/go/go_else_statement.php)
 
 [Pointers in Golang - Geeks for Geeks](https://www.geeksforgeeks.org/go-language/pointers-in-golang/#google_vignette)
+
+[Go if else Statement](https://www.w3schools.com/go/go_else_statement.php)
