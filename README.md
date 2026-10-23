@@ -247,6 +247,30 @@ var num int = 5
 ftm.Println(word + num)
 ```
 
+## Data Types: Sample Code
+
+To see an example of how all these data types interact, download this code [INSERT HERE] and try it for yourself! Just load it into a compiler and run it through your terminal as stated in the tutorial, and get started using Go.
+
+## Selection, Loops, and Conditionals
+
+### Logic Behind Control Statements
+boolean values
+explain uses
+
+### One-Condition if/else Statement
+are there variables other than if/else/elif
+explain code blocks in control statements
+explain "dangling else" problem
+
+### Milti-Condition if/else Statement
+does go short circut? include example 
+
+### if/else/elif Statements
+
+### Switch-Case Statements
+does language support
+do you have to use break or can you use continue
+
 
 ## Resources
 [Official Go tutorial](https://go.dev/tour/welcome/1)
