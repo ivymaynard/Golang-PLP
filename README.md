@@ -249,7 +249,7 @@ ftm.Println(word + num)
 
 ## Data Types: Sample Code
 
-To see an example of how all these data types interact, download this code [INSERT HERE] and try it for yourself! Just load it into a compiler and run it through your terminal as stated in the tutorial, and get started using Go.
+To see an example of how all these data types interact, download [this code](https://github.com/ivymaynard/Golang-PLP/blob/53f3dd40639b70ef2fe63ffa03a357f0c2773f96/main.go) and try it for yourself! Just load it into a compiler and run it through your terminal as stated in the tutorial, and get started using Go.
 
 ## Conditionals, Logical Operators, and Short-Circut Evaluation
 
