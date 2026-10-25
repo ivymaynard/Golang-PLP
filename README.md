@@ -251,16 +251,14 @@ ftm.Println(word + num)
 
 To see an example of how all these data types interact, download this code [INSERT HERE] and try it for yourself! Just load it into a compiler and run it through your terminal as stated in the tutorial, and get started using Go.
 
-## Selection, Loops, and Conditionals
+## Conditionals, Logical Operators, and Short-Circut Evaluation
 
 ### Logic Behind Control Statements
 boolean values
 explain uses
+go does not require () around conditions but requires {} for each block
 
 ### One-Condition if/else Statement
-are there variables other than if/else/elif
-explain code blocks in control statements
-explain "dangling else" problem
 
 Conditional statements in Go use boolean expressions to dictate the flow of program control. They check the specified conditions and run code chunks depending on the evaluated value of the boolean statement. In general, the format of an if/else statement in Go looks like:
 
@@ -272,25 +270,156 @@ if condition {
 }
 ```
 
-Here is an example of a simple if/else statement being used to determine if a student passed or failed an exam. Notice how the else statement is used as a catch-all. Anything grade that does not evaluate
+Here is an example of a simple if/else statement being used to determine if a student passed or failed an exam. Notice how the else statement is used as a catch-all. Anything grade that does not evaluate to true, meaning anything not lower than a 51, will evaluate as false and the else statement will run.
 
 ```
 grade := 95
-if (grade < 51 {
+if grade < 51 {
   fmt.Println("Try again next time...")
 } else {
   fmt.Println("Congrats! You passed.")
 }
 ```
 
-### Milti-Condition if/else Statement
+You can also use an if statement without an else statement. If the conditions evaluates to true, the block will run. If it evaluates to false, the flow of programming control will continue on.
+
+```
+grade := 27
+if grade > 0 {
+  fmt.Println("You got at least one question right")
+}
+```
+
+In some languages, there is the "dangling else" problem which occurs when the else statement can logically attatch to multiple if statements due to syntaxical errors. In Go, this is not an issue. Because of the strict formatting of code blocks being contained in curly braces {}, there is no ambiguity that can lead to the dangling else.
+
+### if/else/else if Statements
+
+If you have more than one condition you wish to check, you can use an if/else/else if statement. The condition in the if statement will be evaluated, and if it is not true, it will be checked against the else if statement. If that is not true, it will move on until it either is true or it reaches to else statement.
+
+```
+grade := 95
+if grade > 90 {
+  fmt.Println("You got an A!")
+} else if grade > 80 {
+  fmt.Println("That's a B!")
+} else if grade > 70 {
+  fmt.Println("C for you.")
+} else if grade > 60 {
+  fmt.Println("You earned a D.")
+} else {  \\ true if grade is lower than 60
+  fmt.Println("That's and F...")
+}
+```
+
+
+### Multi-Condition if/else Statement
 does go short circut? include example 
 
-### if/else/elif Statements
+Instead of writing an one condition if/else/else if statement in go, you can combine conditions in one statement. There are a few ways to do this
+
+#### The AND Operator: &&
+
+A statement will evaluate to true if both conditions connected by the && are true. In this case, the code block will run if condition1 and condition2 equal true. If either condition1 or condition2 are false, the entire statement will be false. If both  condition1 and condition2 are false, the result is false.
+```
+if (condition1) && (condition2) {
+......
+}
+```
+
+Here is an example. If the student scored high enough on the exam AND it was a bio exam, a message is printed for the student. If either or both are false, no message will be printed.
+
+```
+grade := 95
+subject := "Biology"
+if grade > 90 && subject == "Biology" {
+    fmt.Println("You will make a great scientist!")
+}
+```
+
+This is where the idea of short-circut evaluation comes into play. Short-circut evaluation is when the righthand side of a condition is skipped because the lefthand side's evaluation determined the outcome of the whole statement. 
+
+For the && operator in Go, we know that both conditions must be true on order for the whole statement to be true. If the first condition is false, there is no need for the other to be evaluated, and it will be skipped. This is short-circuting. If the first condition is true, however, the second must be evaluated to determine the outcome.
+
+For example, this code would short-circut. Because the grade is lower than 90, the first condition fails and the second is not checked.
+```
+grade := 45
+subject := "Biology"
+if grade > 90 && subject == "Biology" {
+    fmt.Println("You will make a great scientist!")
+}
+```
+
+#### The OR Operator: ||
+
+The OR operator combines conditions and evaluates to true if either the left or the right condition are true. If both are true, the statement is true. If condition1 is false and condition2 is true, the statement is true. If condition1 is false and condition2 is true, the statement is true. If both are false, the statement is false.
+
+```
+if (condition1) ||  (condition2) {
+......
+}
+```
+
+In this example, a message will print for the student if they scored higher than a 90 in either math or literature.
+```
+mathGrade := 45
+litGrade := 97
+if mathGrade > 90 || litGrade > 90 {
+    fmt.Println("You have found at least one strong suit!")
+}
+```
+
+Short-circut evaluation also applies to the OR operator. Since only one condition needs to be true for the statement to be true, if the right condition is true, the left will not be checked. This is shor-circuting. If the right is false, the left must be checked to see if it is true.
+
+In this example, the literature grade won't be checked because the math grade, whcih is condition1, is high enough to evaluate as tru
+```
+mathGrade := 99
+litGrade := 12
+if mathGrade > 90 || litGrade > 90 {
+    fmt.Println("You have found at least one strong suit!")
+}
+```
+
 
 ### Switch-Case Statements
-does language support
-do you have to use break or can you use continue
+
+Go supports something called a switch statement, which is a shorter way to write a sequence of if/else statements. It works by selecting one of many code blocks to be executed based on the value or type of an expression. t is similar to switch statements in C++, java, and PHP, except it does not require break statements since it only evaluates the matched case.
+
+The syntax of a switch statement in Go looks like:
+
+```
+switch expression {
+case x:
+   // code block
+case y:
+   // code block
+case z:
+...
+default: // optional
+   // code block
+}
+```
+
+The expression in the switch statement is evaluated once. Then the value or type of the switch expression is compared with each case. If there is a match, the associated block of code will run. The default case is optional and it specifies what your program will do if there is no case match. It works similarly to an else statement in a series of if/else/else if statements.
+
+This is an example of a value based switch statement. A message is printed out based on the mood of the user. Because the mood is 4, case 4 will be executed, and the associated message will run. There is no default statement, meaning that any mood value not between 1 and 5 will result in nothing being executed.
+```
+mood := 4
+
+switch day {
+case 1:
+    fmt.Println("Sad day..")
+case 2:
+    fmt.Println("Not feeling great")
+case 3:
+    fmt.Println("Very average")
+case 4:
+    fmt.Println("Its a good day!")
+case 5:
+    fmt.Println("BEST DAY EVER!!")
+}
+```
+
+Short-circut evaluation applies to switch statements as well. Because Go executes these statements in a top to bottom order, it will stop immediatley after a case is matched. In the last example, the statement short-circuted after case 4 was matched. case 5 never needed to be evaluated because a match had already been found.
 
 
 ## Resources
@@ -311,3 +440,9 @@ do you have to use break or can you use continue
 [Pointers in Golang - Geeks for Geeks](https://www.geeksforgeeks.org/go-language/pointers-in-golang/#google_vignette)
 
 [Go if else Statement](https://www.w3schools.com/go/go_else_statement.php)
+
+[If/Else - Go by Example](https://gobyexample.com/if-else)
+
+[Combining Conditional Statements in Golang](https://www.geeksforgeeks.org/go-language/combining-conditional-statements-in-golang/)
+
+[Go Switch Statement - W3 Schools](https://www.w3schools.com/go/go_switch.php)
