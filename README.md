@@ -253,10 +253,9 @@ To see an example of how all these data types interact, download this code [INSE
 
 ## Conditionals, Logical Operators, and Short-Circut Evaluation
 
-### Logic Behind Control Statements
-boolean values
-explain uses
-go does not require () around conditions but requires {} for each block
+Conditional statements iin Go control the flow of program execution baed on boolean conditions. These conditions evaluate to true or false and are used in if/else/else if statements as well as switch statements, all of which will be covered in this section.
+
+As you will see below, go requires curly braces {} around each code block attatched to a conditional statement, but parentheses () around conditions are not required.
 
 ### One-Condition if/else Statement
 
