@@ -420,6 +420,10 @@ case 5:
 
 Short-circut evaluation applies to switch statements as well. Because Go executes these statements in a top to bottom order, it will stop immediatley after a case is matched. In the last example, the statement short-circuted after case 4 was matched. case 5 never needed to be evaluated because a match had already been found.
 
+## Conditionals: Sample Code
+
+To see an example of how these conditional statements work using a more real-world example, download [this code](https://github.com/ivymaynard/Golang-PLP/blob/16f1ef580dae2df29d5ccb2d8e8d2f1f2f41297e/conditionals.go) to test it out.
+
 
 ## Resources
 [Official Go tutorial](https://go.dev/tour/welcome/1)
