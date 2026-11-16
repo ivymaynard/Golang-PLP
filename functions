@@ -1,0 +1,57 @@
+package main
+
+import "fmt"
+
+type Player struct {
+	LastName    string
+	Age         int
+	Captaincy   bool
+	Goals       int
+	Assists     int
+	AwardsWon   []string
+	GamesPlayed int
+	Team        string
+}
+
+// function that calculates total points
+func pointsTotal(g, a int) int {
+	return g + a
+}
+
+// function that recursivley prints all items of a list
+func awardsList[T any](items []T) {
+	if len(items) == 0 {
+		return
+	}
+
+	fmt.Println(items[0]) // prints first element
+
+	awardsList(items[1:]) // function calls itself
+}
+
+// function that increments the goal total when a player scored
+func goalScored(p *Player) { // we must use a pointer because Go is pass-by-value
+	p.Goals++
+}
+
+func main() {
+
+	p := Player{
+		LastName:    "McDavid",
+		Age:         30,
+		Captaincy:   true,
+		Goals:       60,
+		Assists:     93,
+		AwardsWon:   []string{"Hart", "Ted Lindsay", "Art Ross", "Rocket Richard"},
+		GamesPlayed: 82,
+		Team:        "Oilers"}
+	fmt.Println(p, "\n")
+
+	playerPoints := pointsTotal(p.Goals, p.Assists)
+	fmt.Println("Points:", playerPoints, "\n")
+
+	awardsList(p.AwardsWon)
+
+	goalScored(&p)
+	fmt.Println("\nUpdated goals:", p.Goals, "\n")
+}
