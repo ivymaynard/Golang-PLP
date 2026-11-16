@@ -425,28 +425,227 @@ Short-circut evaluation applies to switch statements as well. Because Go execute
 To see an example of how these conditional statements work using a more real-world example, download [this code](https://github.com/ivymaynard/Golang-PLP/blob/16f1ef580dae2df29d5ccb2d8e8d2f1f2f41297e/conditionals.go) to test it out.
 
 ## Functions
-Functions are one of the most important
+Functions are one of the most important features of any programming language. They are a resuable block of code designed to perform one specific task. They can dramatically imrpove code organization and decrease the amount of repetition, improving readability.
 
-Write a function that takes in two numbers, multiplies them, and returns the output
-Write a recursive function (one that calculates a factorial is fine)
-Write a function that takes in a string (or your language's equivalent) and splits it into two strings, then returns both strings
-Call your functions and save the results of the function calls in variables.
-Write a function that tests whether your language is pass-by-reference or pass-by-value.
- 
+This is the standard Syntax for a function in Go. The keyword func declares the function. The parameteres are any input values accepted by the function. The returnType specifies the data type returned by the function, but it is optional. In Go, functions can be placed anywhere a code file after the import and package statements at the top of the file.
+```
+func functionName(parameters) returnType {
+    // function body
+}
+```
 
-For your write-up, address the following items:
+### Multiplying Function
 
-What is the syntax for declaring a function in your language?
-Are there any rules about where the function has to be placed in your code file so that it can run?
-Does your language support recursive functions?
-Can functions in your language accept multiple parameters?  Can they be of different data types?
-Can functions in your language return multiple values at the same time?  How is that implemented?  If not, are there ways around that problem?  What are they?
-Is your language pass-by reference or value?  Check your code against outside sources in case there is anything tricky going on (like in Perl).
-Where are the arguments, parameters and local variables stored (value-on-stack, ref-to-heap-on stack) during execution?
-What are the scoping rules in your language (visibility and lifetime of variables before, during and after code blocks)?
-Are side-effects possible? Are there guard rails against side-effects?
-Where are local variable values stored? (on the stack? On the heap?)
-Are there any other aspects of functions in your language that aren't specifically asked about here, but that are important to know in order to write one?  What are they? (e.g. dynamic vs static scope)
+A very simple example of a function is one that takes in two numbers, multiplies them together, and returns the output. The example below takes in integers a and b and returns their product.
+
+```
+func multiply(a, b int) int {
+    return a * b
+}
+```
+
+This function isn't very useful on its own, however. You must **call a function** in order to use it and its output in your code. Here we call the multiply function and pass in two integers, 5 and 10, that we would like multiplied together. Because the multiply function returns a value, we need to store it somewhere, so we use the variable "product" to catch the value returned.
+
+```
+product := multiply(5, 10) // product = 50
+fmt.Printf("Result of multiplication: %d", product)
+```
+
+### Recursive Function
+
+A recursive function is a function that calls itself until it reaches a stopping point. Each recursive function has a base case, which stips a function from creating an infinite loop, and a recursive case, where the function modifies arguments to move closer to the base case.
+
+A standard example is a function that calculates the factorial of an integer.
+```
+func fact(n int) int {
+	// Base case: stops recursion when n is 0
+	if n == 0 {
+		return 1
+	}
+	// Recursive case: moves closer to the base case
+	return n * fact(n-1)
+}
+
+func main() {
+    fmt.Println(fact(5)) // Output: 120
+}
+```
+
+### Variadic Functions
+
+These functions accept a variable number of arguments of the same type instead of specifying a fixed number of parameter as we have seen before. An example is a function that calculates the sum of different integers. The number of arguments passed is specified during the function call.
+
+```
+func sum(nums ...int) int {
+	total := 0
+	for _, value := range nums {
+		total += value
+	}
+	return total
+}
+func main() {
+
+	fmt.Println(sum(10, 20)) // Output: 30
+
+	fmt.Println(sum(10, 20, 30, 40))  // Output: 100
+}
+```
+
+### Multiple Return Values
+
+A useful feature of Go is that it allows a function to return multiple values. This is most commonly used to return a result along with additional information like an error value. Below is an example of a function that returns the result of quoteint and remainder division.
+
+```
+func divide(a, b int) (int, int) {
+
+    quotient := a / b
+    remainder := a % b
+
+    return quotient, remainder
+}
+func main() {
+
+    q, r := divide(10, 3)
+
+    fmt.Println("Quotient:", q)  // Outut: 3
+    fmt.Println("Remainder:", r) // Output: 1
+}
+```
+
+#### String Splitting Function
+
+Functions can be used to do all sorts of tasks. Any data type can be passed in and any data type can be returned, allowing for their implementation in various use cases. Below is an example of a funcion that takes in a string, splits it, and returns both parts of the function.
+
+```
+func split(str string) (string, string) {
+
+    mid := len(str) / 2
+    return str[:mid], str[mid;]
+}
+func main() {
+
+    a, b := split("Hellow, World!")
+
+    fmt.Println("1st string:", a) 
+    fmt.Println("2nd string:", b)
+}
+```
+
+### Parameters of Different Types
+
+Go functions accept parameters of different types, but since Go is statically types, they all must be explicitly defined.
+
+This example shows how a function can be written to take in multiple parameters of different data types.
+
+```
+func playerInfo(name string, age int, isActive bool) {
+    fmt.Println("Player:", name, "Age:", age, "Is Active:", isActive)
+}
+```
+
+In Go 1.18, Generics were introduced, which allow a single function parameter o accept multiple data types. This feature improves the flexibility of functions and opens the doors for prorammers to creat even more compact and reuseable functions.t
+
+The keyword "any" specified an unconstrained type which allows that parameter to be any data type.
+```
+func printPair[K any, V any](key K, value V)) {
+    fmt.Printf("%v: %v\n", key, value)
+}
+```
+
+Type unions, specified using the pipe operator | resctrict a parameter to a specific list of data types. This function accepts either an int or a float64 for both parameters.
+```
+func add[T int | float64](a T, b T) T {
+    return a + b
+}
+```
+
+### Pass by Value
+
+Arguments are the values passed into a function when it is called. In Go, these arguments are passed by vlaue, meaning a copy of the variable is passed into the function, so the modifications to the variable inside the function **do not** chnage the original variable.
+
+Here you can see that an increment function, which takes in a variable and increases its value by one, only updates the value within the function. The original variable that we passed in remains unchanged.
+
+```
+func increment(num int) {
+	num++
+	fmt.Println("Inside function:", num) // Output: 6
+}
+func main() {
+	x := 5
+	fmt.Println("Before function call:", x) // Output: 5
+	increment(x)
+	fmt.Println("After function call:", x) // Output: 5
+}
+```
+
+If we wanted to update the original variable, we can use pointers to override the pass-by-value nature of Go. When we pass pointers into a function as arguments, we allow the function to modify the original variable indirectly. In this case, the variable "x" stores the value 3 and the pointer "&x" stores the memory address of x. When we use "*num" in the function, it dereferences the pointer and accesses the original value that was stored in x. We can then update that original value.
+
+```
+func double(num *int) {
+	*num *= 2
+}
+func main() {
+	x := 5
+	fmt.Println("Before:", x) // Outut: 5
+	double(&x)
+	fmt.Println("After:", x) // Output: 10
+}
+```
+
+### Scope of Functions
+
+#### Function Visibility
+The scope of functions itself, function visibility, determines where the function can be called. In Go, this is denoted by the capitalization of the first letter of a function and where it is defined.
+
+**Exported Functions:** A public function declared at package level starting with an uppercase letter. Package level is the outermost level of a file. These functions can be called from any other file that imports the package.
+- func Calculate()
+**Unexported Functions:** A package-private function declared at package level starting with a lowercase letter. These functions can be called from file within the exact same package, but not from outside packages.
+- func calculate()
+  **Local Functions:** Go does not allow a standard named function to be declared within another function: however, you can assign an ananymous function to a variable inside a function. The scope is then restricted to that enclosed block.
+  - fn := func(){}
+**Methods:** A method is a function attatched to a specific type. Its visibility across packages follows the uppercase/lowercase rule.
+- data.Calculate()
+
+#### Scope of Variables
+Similarly to function visibility, the scope of a variable is the part of the program where that variable is accessible.
+
+**Local variables** are declared within a function or code block and not accessible outside of it. In the example below, localVar is accessible witin the function, but the program will error if we try to use it somewhere else
+```
+func main() {
+    var localVar int = 200 // Local variable
+    fmt.Printf("%d\n", localVar) // Accessible here
+}
+
+fmt.Printf(localVar) //ERROR
+```
+
+**Global Variables** are defined outside of any function or block and are accessible throughout the entire program.
+```
+var myVariable int = 100 // Global variable
+
+func main() {
+    fmt.Printf("%d\n", myVariable) // Accessible here
+}
+```
+
+
+### Variable Storage
+
+In Go, variables can be stored on either the stack or the heap. The Go compiler uses a compile-time process called escape analysis to decide where each variable goes.
+
+By default, go tries to store local variables in the stack. It will stay on the stack if  the variable stayes within the functions scope and its size is known and reasonable. Local variables will be stored on the heap if a function returns its memory address, a pointer of that local variable is assigned to something that outlives the function, or if the size of the variable is very large or dynamic. There are other cases hat would cause a local or function variable to be stored in the heap which we have not yet covered.
+
+
+### Side Effects
+
+A side effect occurs when a function modifies the state of the system or interacts with the program in some way other than simply returning a value. Side effects in Go can both be a standard design tool or a source of bugs.
+
+One intentional side effect is package initialization. When you import a package in Go, the init() function is run before main states and all package-level varaibles are evaluated. This is something that the programmer doesnt explicityly code, but changes the program anyway.
+
+One unintetional data mitaion is when slices are passed into a function. A slice is a view of an underlying array, and if you modify that array within a function, the original array will be modified. This can cause issues if the programmer is under the impression that Go being a pass-by-value programming language makes all data types immutable.
+
+Another similar side effect occurs when a map is passes into a function. Passing a map only copies the header, not the full underlying structure. Any modifications made to map keys within a function will modify the original map as well.
+
 
 
 ## Resources
@@ -473,3 +672,11 @@ Are there any other aspects of functions in your language that aren't specifical
 [Combining Conditional Statements in Golang](https://www.geeksforgeeks.org/go-language/combining-conditional-statements-in-golang/)
 
 [Go Switch Statement - W3 Schools](https://www.w3schools.com/go/go_switch.php)
+
+[Functions in Go Language](https://www.geeksforgeeks.org/go-language/functions-in-go-language/)
+
+[8 ways to split a string in Go with exaples - GOSAMPLES](https://gosamples.dev/split-string/)
+
+[Golang Quick Reference: Packagaes and Scopes](https://medium.com/@cndf.dev/golang-quick-reference-packages-and-scopes-5d9e449c4844)
+
+[Scope of Variables in Go - Geeks fo Geeks](https://www.geeksforgeeks.org/go-language/scope-of-variables-in-go/)
